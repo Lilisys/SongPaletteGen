@@ -1,2 +1,1 @@
-worker: python worker.py
-web: gunicorn songpalette.wsgi
+web: gunicorn --debug app:app --log-file=-
