@@ -1,26 +1,48 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <div class="jumbotron"> 
     <h1> Tone Analyzation</h1> 
-    <h4> By parsing each lyric from your chosen songs, we are able to determine the overall tones of  </h4>
+    <h5> By parsing each lyric from your chosen songs, we are able to determine an overall "tone". Below you can see a raw breakdown of each song based on its' degree of anger, disgust, fear, joy and sadness. <br> <br></h5>
 <p class="center">
       
 
-      <span id="under"> {{song0}}: </span> {% for i in song0score %}
-      {{i[0]}}  {{i[1]}}
+
+    <div class = "makemeleft">   
+      <span id="under"> <b>{{song0}}:</b> </span> br>{% for i in song0score %}
+      {{i[1]}}% {{i[0]}} 
+      <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{i[1]}}"
+          aria-valuemin="0" aria-valuemax="100" style="width:{{i[1]}}%"> 
+          </div>
+        </div>
       {% endfor %}<br>
 
-
-      <span id="under"> {{song1}}: </span>{% for i in song1score %}
-      {{i[0]}} {{i[1]}}
+      <span id="under"> <b>{{song1}}:</b> </span><br>{% for i in song1score %}
+      {{i[1]}}% {{i[0]}} 
+       <div class="progress">
+          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{i[1]}}"
+          aria-valuemin="0" aria-valuemax="100" style="width:{{i[1]}}%"> 
+          </div>
+        </div>
       {% endfor %}<br>
 
-      <span id="under"> {{song2}}: </span>{% for i in song2score %}
-      {{i[0]}} {{i[1]}}
+      <span id="under"> <b>{{song2}}:</b> </span><br>{% for i in song2score %}
+      {{i[1]}}% {{i[0]}} 
+       <div class="progress">
+          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{i[1]}}"
+          aria-valuemin="0" aria-valuemax="100" style="width:{{i[1]}}%"> 
+          </div>
+        </div>
       {% endfor %}
 
     </p>
-    <h1>Enter Song Title and Artist Name!</h1>
+</div> 
+<h5> We then took the tone score and used an algorithm to convert it into a corresponding color to match its' mood, and created the background gradient using those three colors. You can also download a file with the three colors as a starting base for an art project.</h5>
+ <h3>Preview:</h3>
+    <canvas width="200" height="300" id="preview" style="border:1px solid #c3c3c3;">Sorry, no canvas available</canvas><br>
+    <a id="download" download="CanvasDemo.png">Download as image</a>
+    <h3>Play Again!</h3>
     <form action="." method="POST">
         <input type="text" name="song-title1" placeholder="{{song0}}">
         <input type="text" name="artist1" placeholder="{{singer0}}">
@@ -30,18 +52,37 @@
         <br>
         <input type="text" name="song-title3" placeholder="{{song2}}">
         <input type="text" name="artist3" placeholder="{{singer2}}">
-<br>
-        <input type="submit" name="my-form" value="Send" >
+<br><br>
+        <input type="submit" name="my-form" value="Go!" >
     </form>
-
-    Preview:<br>
-    <canvas width="200" height="300" id="preview" style="border:1px solid #c3c3c3;">Sorry, no canvas available</canvas><br>
-	<a id="download" download="CanvasDemo.png">Download as image</a>
-    
-
+ 
+ 
+ </div> 
     <script type="text/javascript" src = {{url_for('static', filename = 'js/canvas.js')}}></script>
     <!--script>doPreview( "({{r0}}, {{g0}}, {{b0}})", "({{r1}}, {{g2}}, {{b2}})", "({{r2}}, {{g2}}, {{b2}})")</script-->
     <script>doPreviewHex("{{rgb0}}", "{{rgb1}}", "{{rgb2}}")</script> 
- 
+//     <script> 
+//         var sheet = document.createElement('style')
+//         sheet.innerHTML = "body {background: {{rgb0}}; 
+// background: -webkit-linear-gradient(to left, {{rgb0}} , {{rgb1}}); 
+// background: linear-gradient(to left, {{rgb0}} , {{rgb1}}); }";
+//         document.body.appendChild(sheet);
+
+//     </script> 
+ <script type="text/javascript">
+ $(document).ready(function(){
+
+    $('body').css({"background": "linear-gradient(to left, {{rgb0}}, {{rgb1}}, {{rgb2}}"}); 
+
+    // $('body').css({"background": "{{rgb0}}"}); 
+  });
+ </script> 
+
+
+
+
+
+
+
 
 {% endblock %}

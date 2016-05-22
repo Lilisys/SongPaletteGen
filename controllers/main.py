@@ -144,11 +144,11 @@ def main_route_form():
         joy = toneMap['Joy']
         sadness = toneMap['Sadness']
         whichscore = 'song' + str(num) + 'score'
-        options[whichscore] =   [['Anger', anger],
-                                  ['Disgust', disgust], 
-                                  ['Fear', fear], 
-                                  ['Joy', joy], 
-                                  ['Sadness', sadness]  
+        options[whichscore] =   [['Anger', ("%.2f" % (anger * 100))],
+                                  ['Disgust', ("%.2f" % (disgust * 100))], 
+                                  ['Fear', ("%.2f" % (fear * 100))], 
+                                  ['Joy',( "%.2f" % (joy * 100))], 
+                                  ['Sadness', ("%.2f" % (sadness * 100))]  
                                 ]
 
         #r = anger & disgust, g = joy, b = fear & sadness
