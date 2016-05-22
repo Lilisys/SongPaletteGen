@@ -79,7 +79,27 @@ h3 {
 
 margin-top: 8em;
 }
+footer a { 
+text-decoration: none;
+opacity: 1;
+color: white;
+}
+footer { 
+    font-family:helvetica;
+    text-transform:lowercase;
+position: fixed;
+  width:50px;
+  letter-spacing:2px;
+ right:30px;
+    font-size:7px;
+    bottom:10px;
+    color:#fff;
+    z-index:999999999999999999;
+      -moz-transition-duration:0.5s;
+    -webkit-transition-duration:0.5s;
+    -o-transition-duration:0.5s;
 
+}
 
 
 
