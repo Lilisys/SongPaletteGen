@@ -4,14 +4,15 @@
 <html lang="en">
 <head>
 
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/bootstrap.css" />
 
     <title>Color Palette Generator!!!</title>
 </head>
 <body>
 
 
- <script type="text/javascript">
+ <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" type="text/javascript">
+
     
 $(document).ready(function() {
     $('.field input').keyup(function() {
@@ -33,10 +34,9 @@ $(document).ready(function() {
 
 // </script>
 
-  <div class="center">
+  <div id="wrapper" class="center">
     {% block content %}{% endblock %}
   </div>
-  <script type="text/javascript" src="/static/js/main.js"></script>
 </body>
 
 </html>
