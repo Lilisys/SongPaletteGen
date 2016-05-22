@@ -3,23 +3,39 @@
 
 <!-- <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"/>
  -->
+ <script type="text/javascript">
+    
+$(document).ready(function() {
+  $('form').on('submit', function(e){
+    // validation code here
+    if(!valid) {
+      e.preventDefault();
+    }
+  });
+});
 
+
+document.getElementById("send").addEventListener("click", function(event){
+    event.preventDefault()
+});
+
+// </script>
 
     <h1>INDEX</h1>
 
     <h1>Enter some text</h1>
     <h2>(it will be converted to uppercase)</h2>
     <form action="." method="POST">
-        <input type="text" name="song-title1" placeholder="Song Title One">
-        <input type="text" name="artist1" placeholder="Artist One">
+        <input type="text" name="song-title1" placeholder="Song Title One" required>
+        <input type="text" name="artist1" placeholder="Artist One" required>
         <br>
-        <input type="text" name="song-title2" placeholder="Song Title Two">
-        <input type="text" name="artist2" placeholder="Artist Two">
+        <input type="text" name="song-title2" placeholder="Song Title Two" required>
+        <input type="text" name="artist2" placeholder="Artist Two" required>
         <br>
-        <input type="text" name="song-title3" placeholder="Song Title Three">
-        <input type="text" name="artist3" placeholder="Artist Three">
+        <input type="text" name="song-title3" placeholder="Song Title Three" required>
+        <input type="text" name="artist3" placeholder="Artist Three" required>
 
-        <input type="submit" name="my-form" value="Send" >
+        <input type="submit" name="my-form" value="Send" id="send">
     </form>
    
 
