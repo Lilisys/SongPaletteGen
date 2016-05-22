@@ -1,0 +1,91 @@
+
+
+.center {
+	margin:0 auto;
+	max-width: 500px;
+}
+
+.headdiv{ 
+     color: black;
+     padding-top: 20em;
+     text-align: center;
+
+}
+.field { 
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+
+}
+.all { 
+
+    padding: 10em;
+    margin: 0 auto;
+    margin-right: 8em;
+
+}
+body { 
+    margin: 0 auto;
+    text-align: center;
+
+background: #F0C27B; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #F0C27B , #4B1248); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #F0C27B , #4B1248); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+             
+height: 50em;
+width: 90em; 
+
+
+}
+
+#under { 
+    text-align: left;
+
+}
+
+h3 { 
+    color: black;
+
+}
+ h1 { 
+    color: black;
+
+}
+
+.main { 
+    /*width: 50em;*/
+    background-color: white;
+}
+
+.jumbotron { 
+    margin-top: 3em;
+    opacity: .87;
+    padding: 5em;
+
+}
+
+.makemeleft { 
+
+    text-align: left;
+}
+
+
+.homepage h1, h2{ 
+
+    color: white;
+
+}
+.homepage h1{ 
+
+margin-top: 8em;
+}
+
+
+footer { 
+
+margin-bottom: 2em;
+
+}
+
+
+
