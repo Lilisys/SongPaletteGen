@@ -3,28 +3,14 @@
 
 <!-- <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"/>
  -->
- <script type="text/javascript">
     
-$(document).ready(function() {
-  $('form').on('submit', function(e){
-    // validation code here
-    if(!valid) {
-      e.preventDefault();
-    }
-  });
-});
 
-
-document.getElementById("send").addEventListener("click", function(event){
-    event.preventDefault()
-});
-
-// </script>
 
     <h1>INDEX</h1>
 
     <h1>Enter some text</h1>
     <h2>(it will be converted to uppercase)</h2>
+    <div class = "field"> 
     <form action="." method="POST">
         <input type="text" name="song-title1" placeholder="Song Title One" required>
         <input type="text" name="artist1" placeholder="Artist One" required>
@@ -36,33 +22,10 @@ document.getElementById("send").addEventListener("click", function(event){
         <input type="text" name="artist3" placeholder="Artist Three" required>
 
         <input type="submit" name="my-form" value="Send" id="send">
+
     </form>
+    </div> 
    
 
-
-    {{result}}
-
-    <p class="center">
-        Hello there {{name}}!
-      Welcome! Type in 3 songs and their artists, and we'll give you a color palette :D
-    </p>
-
-    {% for song in songs %}
-        Here's a song: {{song}}
-    {% endfor %}
-
-
-
-
-    Preview:<br>
-    <canvas width="200" height="300" id="preview" style="border:1px solid #c3c3c3;">Sorry, no canvas available</canvas><br>
-	<a id="download" download="CanvasDemo.png">Download as image</a>
-    
-
-    <script src = {{url_for('static', filename = 'js/main.js')}}> 
-    doPreview(  "(123, 222, 11)", 
-                "(97, 55, 234)", 
-                "(222, 13, 121)");
-    </script> 
 
 {% endblock %}

@@ -1,4 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+
 <html lang="en">
 <head>
 
@@ -7,6 +9,30 @@
     <title>Color Palette Generator!!!</title>
 </head>
 <body>
+
+
+ <script type="text/javascript">
+    
+$(document).ready(function() {
+    $('.field input').keyup(function() {
+
+        var empty = false;
+        $('.field input').each(function() {
+            if ($(this).val().length == 0) {
+                empty = true;
+            }
+        });
+
+        if (empty) {
+            $('.actions input').attr('disabled', 'disabled');
+        } else {
+            $('.actions input').removeAttr('disabled');
+        }
+    });
+});
+
+// </script>
+
   <div class="center">
     {% block content %}{% endblock %}
   </div>

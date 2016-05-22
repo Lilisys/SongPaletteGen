@@ -36,13 +36,13 @@ def main_route_form():
     processed_artist3 = artist3.upper()
 
 
-    options['song0'] = title1 + '0'
-    options['song1'] = title2 + '1'
-    options['song2'] = title3 + '2'
+    options['song0'] = title1 
+    options['song1'] = title2 
+    options['song2'] = title3 
 
-    options['singer0'] = artist1 + '0'
-    options['singer1'] = artist2 + '1'
-    options['singer2'] = artist3 + '2'
+    options['singer0'] = artist1 
+    options['singer1'] = artist2 
+    options['singer2'] = artist3 
 # track.search?q_track=back%20to%20december&q_artist=taylor%20swift&f_has_lyrics=1
     # r = requests.get('http://api.musixmatch.com/ws/1.1/track.search?apikey=f316db2a6a195b45a7ca85d622055158&q_track=back%20to%december&q_artist=taylor%20swift&f_has_lyrics=1')
                                           
@@ -158,13 +158,13 @@ def main_route_form():
         name = 'r' + str(num)
         nameg = 'g' + str(num)
         nameb = 'b' + str(num)
-        options[name] = r
-        options[nameg] = g
-        options[nameb] = b
+        options[name] = int(r*1.5)
+        options[nameg] = int(g*1.5)
+        options[nameb] = int(b*1.5)
 
     print options 
     # print "rgb(" + str(r), + ',' + str(g) + ',' + str(b) + ')'
-   return render_template("result.html", **options)
+    return render_template("result.html", **options)
 
 
 
