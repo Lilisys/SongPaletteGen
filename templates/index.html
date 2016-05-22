@@ -28,7 +28,17 @@
         Hello there {{name}}!
       Welcome! Type in 3 songs and their artists, and we'll give you a color palette :D
     </p>
+
     {% for song in songs %}
         Here's a song: {{song}}
     {% endfor %}
+
+
+
+
+    Preview:<br>
+    <canvas width="200" height="300" id="preview" style="border:1px solid #c3c3c3;">Sorry, no canvas available</canvas><br>
+	<a id="download" download="CanvasDemo.png">Download as image</a>
+
+
 {% endblock %}
