@@ -17,6 +17,9 @@ def main_route():
 
     return render_template("index.html", **options)
 
+def rgb_to_hex(rgb):
+    return '#%02x%02x%02x' % rgb
+
 @main.route('/', methods=['POST'])
 def main_route_form():
     options = {}
@@ -161,6 +164,9 @@ def main_route_form():
         options[name] = int(r*1.5)
         options[nameg] = int(g*1.5)
         options[nameb] = int(b*1.5)
+
+        rgbName = 'rgb' + str(num)
+        options[rgbName] = rgb_to_hex
 
     print options 
     # print "rgb(" + str(r), + ',' + str(g) + ',' + str(b) + ')'

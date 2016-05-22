@@ -26,7 +26,8 @@
     
 
     <script type="text/javascript" src = {{url_for('static', filename = 'js/canvas.js')}}></script>
-    <script>doPreview( "({{r0}}, {{g0}}, {{b0}})", "({{r1}}, {{g2}}, {{b2}})", "({{r2}}, {{g2}}, {{b2}})")</script> 
+    <!--script>doPreview( "({{r0}}, {{g0}}, {{b0}})", "({{r1}}, {{g2}}, {{b2}})", "({{r2}}, {{g2}}, {{b2}})")</script-->
+    <script>doPreviewHex({{rgb0}}, {{rgb1}}, {{rgb2}})</script> 
  
 
 {% endblock %}

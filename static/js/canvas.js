@@ -42,6 +42,26 @@ function doPreview(rgb0, rgb1, rgb2) {
 
 }
 
+function doPreviewHex(in_hex0, in_hex1, in_hex2) {
+	//Assign hex vals from given rgb
+	hex0 = 	in_hex0;
+	hex1 = 	in_hex1;
+	hex2 = 	in_hex2;
+	
+	//For the preview
+	var c = document.getElementById("preview");
+	var ctx = c.getContext("2d");
+	console.log(hex0, hex1, hex2)
+	ctx.fillStyle = hex0;
+	ctx.fillRect(smallBound, smallOffset0, smallBound, smallBound);
+	ctx.fillStyle = hex1;
+	ctx.fillRect(smallBound, smallOffset1, smallBound, smallBound);
+	ctx.fillStyle = hex2;
+	ctx.fillRect(smallBound, smallOffset2, smallBound, smallBound);  
+
+}
+
+
 
 //Init generals 
 ctx.fillStyle = '#ffffff';
