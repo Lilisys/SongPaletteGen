@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Results!</h1>
+    <h1>Enter Song Title and Artist Name!</h1>
+    <form action="." method="POST">
+        <input type="text" name="song-title1" placeholder="{{song0}}">
+        <input type="text" name="artist1" placeholder="{{singer0}}">
+        <br>
+        <input type="text" name="song-title2" placeholder="{{song1}}">
+        <input type="text" name="artist2" placeholder="{{singer1}}">
+        <br>
+        <input type="text" name="song-title3" placeholder="{{song2}}">
+        <input type="text" name="artist3" placeholder="{{singer2}}">
+
+        <input type="submit" name="my-form" value="Send" >
+    </form>
+   
+    <p class="center">
+      Here are the results:
+    </p>
+
+    Preview:<br>
+    <canvas width="200" height="300" id="preview" style="border:1px solid #c3c3c3;">Sorry, no canvas available</canvas><br>
+	<a id="download" download="CanvasDemo.png">Download as image</a>
+    
+
+    <script type="text/javascript" src = {{url_for('static', filename = 'js/main.js')}}></script>
+    <script>doPreview( "({{r0}}, {{g0}}, {{b0}})", "({{r1}}, {{g2}}, {{b2}})", "({{r2}}, {{g2}}, {{b2}})")</script> 
+ 
+
+{% endblock %}
