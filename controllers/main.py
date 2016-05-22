@@ -1,6 +1,15 @@
 from flask import *
 import requests 
 import json
+import os 
+from watson_developer_cloud import ToneAnalyzerV3Beta
+
+
+tone_analyzer = ToneAnalyzerV3Beta( 
+    username='719c30fd-054f-4221-a00c-911f3461825f', 
+    password='0dMvFyNX5qJu', 
+    version='2016-05-19')
+
 
 main = Blueprint('main', __name__, template_folder='templates')
 
@@ -52,6 +61,10 @@ def main_route_form():
     for i in result["message"]["body"]["track_list"]:
         if j == 0: 
             trackid1 = i["track"]["track_id"]
+            j += 1
+        if j == 1: 
+            trackidjust_in_case = i["track"]["track_id"] 
+
         # print "iiiiii"
         #print i["track"]["track_name"] 
 
@@ -64,12 +77,57 @@ def main_route_form():
     print "asdfasdfsf"
     print theid
     resulted = json.loads(theid.text)
-    options['resulted'] = resulted
-    print resulted["message"]["body"]["lyrics"]["lyrics_body"]
-    # lyrical = requests.get('http://api.musixmatch.com/ws/1.1/track.search?apikey=f316db2a6a195b45a7ca85d622055158&track.search?q_track='+title1+'&q_artist='+artist1+'=1')                                           
+   # print resulted["message"]["body"]["lyrics"]["lyrics_body"]
+    lyrics = resulted["message"]["body"]["lyrics"]["lyrics_body"]
+    lyrics = ' '.join(lyrics.split('\n'))
+    lyrics = lyrics.strip('.')
+    print "DID WE STRIP", lyrics
+    lyrics = lyrics.strip('\"')
+    print lyrics
+    lyrics = lyrics.split('*')[0]
+    
 
-    # hold = http://api.musixmatch.com/ws/1.1/track.search?apikey=f316db2a6a195b45a7ca85d622055158&q_artist=queen&q_track=we%20are%20the%20champions&format=json&page_size=1&f_has_lyrics=1
-    return processed_text1 + processed_artist1 + processed_text2 + processed_artist2 + processed_text3 + processed_artist3
+    print "length: ", len(lyrics), lyrics
+    if len(lyrics) == 0: 
+            theid = requests.get('http://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=f316db2a6a195b45a7ca85d622055158&track_id='+str(trackidjust_in_case))                                           
+            resulted = json.loads(theid.text)
+            lyrics = resulted["message"]["body"]["lyrics"]["lyrics_body"]
+
+            lyrics = lyrics.strip('.')
+            lyrics = lyrics.strip('"')
+            print "DID WE STRIP", lyrics
+            lyrics = lyrics.split('*')[0]
+            lyrics = ' '.join(lyrics.split('\n'))
+
+    print lyrics
+   
+
+
+    print "~~~~~~~~~~~~~~~~~~"
+    stuff = os.system('curl -u "719c30fd-054f-4221-a00c-911f3461825f":"0dMvFyNX5qJu" -H "Content-Type: application/json" \
+        -d \"{\\"text\\": \\"%s\\"}\" \
+        "https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19"  > outfile' % lyrics)
+    print "!~!~!~!~!~!~!~!~!~"
+    f = open('outfile', 'r')
+    #print 'f: ', f
+    scores = json.loads(f.read())
+    #print "scores: ", scores
+    
+    toneMap = {}
+    m = 0; 
+    for i in scores['document_tone']['tone_categories']: 
+        if m >= 5: 
+            break
+        for j in i['tones']:
+            m = m+1;
+            toneMap[j['tone_name']] = j['score']
+            print j['tone_name'] + ' : ' + str(j['score'])
+            if m >= 5: 
+                break
+
+    print toneMap
+   
+    return processed_text1 + ' ' + processed_artist1 + processed_text2 + processed_artist2 + processed_text3 + processed_artist3
 
 
 
