@@ -173,7 +173,12 @@ def main_route_form():
         options[nameb] = int(b*1.5)
 
         rgbName = 'rgb' + str(num)
-        options[rgbName] = rgb_to_hex((r, g, b))
+        if num == 0:
+            options[rgbName] = rgb_to_hex((max(0, r - 32), max(g - 32, 0), max(0, b - 32)))
+        elif num == 1:
+            options[rgbName] = rgb_to_hex((r, g, b))
+        else:
+            options[rgbName] = rgb_to_hex((min(r + 32, 255), min(g + 32, 255), min(b +32, 255)))
 
     print options 
     # print "rgb(" + str(r), + ',' + str(g) + ',' + str(b) + ')'
