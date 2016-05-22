@@ -1,7 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
+
+<!-- <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"/>
+ -->
     <h1>INDEX</h1>
+
+    <h1>Enter some text</h1>
+    <h2>(it will be converted to uppercase)</h2>
+    <form action="." method="POST">
+        <input type="text" name="song-title1" placeholder="Song Title One">
+        <input type="text" name="artist1" placeholder="Artist One">
+        <br>
+        <input type="text" name="song-title2" placeholder="Song Title Two">
+        <input type="text" name="artist2" placeholder="Artist Two">
+        <br>
+        <input type="text" name="song-title3" placeholder="Song Title Three">
+        <input type="text" name="artist3" placeholder="Artist Three">
+
+        <input type="submit" name="my-form" value="Send" >
+    </form>
+   
+
+
+    {{result}}
+
     <p class="center">
+        Hello there {{name}}!
       Welcome! Type in 3 songs and their artists, and we'll give you a color palette :D
     </p>
+    {% for song in songs %}
+        Here's a song: {{song}}
+    {% endfor %}
 {% endblock %}
