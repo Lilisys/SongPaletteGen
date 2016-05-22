@@ -2,6 +2,7 @@ from flask import *
 import requests 
 import json
 import os 
+import math
 from watson_developer_cloud import ToneAnalyzerV3Beta
 
 
@@ -126,7 +127,33 @@ def main_route_form():
                 break
 
     print toneMap
+
+    #color math
+    anger = toneMap['Anger']
+    disgust = toneMap['Disgust']
+    fear = toneMap['Fear']
+    joy = toneMap['Joy']
+    sadness = toneMap['Sadness']
+
+    #r = anger & disgust, g = joy, b = fear & sadness
+    if (math.fabs(anger - disgust) > .5):
+        r = int(math.fabs(anger - disgust) * 256)
+    else:
+        r =  int((anger + disgust)/2 * 256)
+
+    g = int(joy * 256)
    
+    if (math.fabs(fear - sadness) > .5):
+        b = int(math.fabs(fear - sadness) * 256)
+    else:
+        b =  int((fear + sadness)/2 * 256)
+
+    print r, g, b
+    options['r'] = r
+    options['g'] = g
+    options['b'] = b
+    
+    # print "rgb(" + str(r), + ',' + str(g) + ',' + str(b) + ')'
     return processed_text1 + ' ' + processed_artist1 + processed_text2 + processed_artist2 + processed_text3 + processed_artist3
 
 

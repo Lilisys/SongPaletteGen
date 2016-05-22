@@ -81,6 +81,6 @@ document.getElementById('download').addEventListener('click', download, false);
 /**
  * START
  */
-doPreview(	"(123, 222, 11)", 
-			"(97, 55, 234)", 
-			"(222, 13, 121)");
+// doPreview(	"(123, 222, 11)", 
+// 			"(97, 55, 234)", 
+// 			"(222, 13, 121)");

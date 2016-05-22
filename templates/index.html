@@ -3,26 +3,7 @@
 
 <!-- <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"/>
  -->
- <script type="text/javascript"> 
- var watson = require('watson-developer-cloud');
 
-var ok = "LALA HELLO FRIENDS I AM HAPPY IN THE TODAY BUT IS THIS MORE THAN EN WORDS I DON'T KNOW THAH AND THE RADIO IS POPULAR TAYLOR SWIFT"
-
-var tone_analyzer = watson.tone_analyzer({
-  username: '719c30fd-054f-4221-a00c-911f3461825f',
-  password: '0dMvFyNX5qJu',
-  version: 'v3',
-  version_date: '2016-05-19 '
-});
-
-tone_analyzer.tone({ text: ok },
-  function(err, tone) {
-    if (err)
-      console.log(err);
-    else
-      console.log(JSON.stringify(tone, null, 2));
-});
-</script> 
 
     <h1>INDEX</h1>
 
@@ -60,6 +41,12 @@ tone_analyzer.tone({ text: ok },
     Preview:<br>
     <canvas width="200" height="300" id="preview" style="border:1px solid #c3c3c3;">Sorry, no canvas available</canvas><br>
 	<a id="download" download="CanvasDemo.png">Download as image</a>
+    
 
+    <script src = {{url_for('static', filename = 'js/main.js')}}> 
+    doPreview(  "(123, 222, 11)", 
+                "(97, 55, 234)", 
+                "(222, 13, 121)");
+    </script> 
 
 {% endblock %}
