@@ -136,13 +136,20 @@ def main_route_form():
                     break
 
         print toneMap
-
+        
         #color math
         anger = toneMap['Anger']
         disgust = toneMap['Disgust']
         fear = toneMap['Fear']
         joy = toneMap['Joy']
         sadness = toneMap['Sadness']
+        whichscore = 'song' + str(num) + 'score'
+        options[whichscore] =   [['Anger', anger],
+                                  ['Disgust', disgust], 
+                                  ['Fear', fear], 
+                                  ['Joy', joy], 
+                                  ['Sadness', sadness]  
+                                ]
 
         #r = anger & disgust, g = joy, b = fear & sadness
         if (math.fabs(anger - disgust) > .5):
@@ -166,7 +173,7 @@ def main_route_form():
         options[nameb] = int(b*1.5)
 
         rgbName = 'rgb' + str(num)
-        options[rgbName] = rgb_to_hex
+        options[rgbName] = rgb_to_hex((r, g, b))
 
     print options 
     # print "rgb(" + str(r), + ',' + str(g) + ',' + str(b) + ')'

@@ -7,7 +7,7 @@ canvas.setAttribute('height', 3000);
 //Set up the canvas on screen
 var preview = document.getElementById('preview'),
 	ctx = canvas.getContext('2d');
-
+ctx.fillStyle = '#ffffff';
 //Globals
 var hex0 = "";
 var hex1 = "";
@@ -64,7 +64,7 @@ function doPreviewHex(in_hex0, in_hex1, in_hex2) {
 
 
 //Init generals 
-ctx.fillStyle = '#ffffff';
+// ctx.fillStyle = '#ffffff';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 // call it like
